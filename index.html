@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI English World</title>
+<style>
+body{margin:0;background:#10152b;color:white;font-family:Arial;text-align:center;padding:25px}
+h1{color:#8b9cff}
+.card{background:#202947;padding:20px;border-radius:20px;margin:20px auto;max-width:500px}
+input{width:90%;padding:14px;border:0;border-radius:12px;margin:10px 0}
+button{padding:13px 20px;border:0;border-radius:12px;background:#788aff;color:white;font-weight:bold}
+#answer{line-height:1.5}
+</style>
+</head>
+<body>
+<h1>AI ENGLISH WORLD</h1>
+<p>Твой личный мир английского языка</p>
+<div class="card">
+<h2>Твой прогресс</h2>
+<h3>⭐ <span id="xp">0</span> XP</h3>
+<p>Уровень: <span id="level">1</span></p>
+</div>
+<div class="card">
+<h2>AI Teacher</h2>
+<p>Задай вопрос или потренируй английский!</p>
+<input id="question" placeholder="Например: объясни Present Simple">
+<br>
+<button onclick="ask()">Спросить учителя</button>
+<p id="answer"></p>
+</div>
+<script>
+let xp=0;
+function ask(){
+let q=document.getElementById('question').value.toLowerCase();
+let a="Попробуй написать вопрос по-английски!";
+if(q.includes("present simple")){
+a="Present Simple — обычные действия. I play football. He plays football. С he/she/it добавляем -s.";
+}else if(q.includes("past simple")){
+a="Past Simple — прошлое. I played football yesterday. Часто добавляем -ed.";
+}else if(q.includes("future simple")){
+a="Future Simple — будущее. Используем will: I will play tomorrow.";
+}else if(q.includes("привет")||q.includes("hello")){
+a="Hello! Let's learn English together!";
+}else if(q.includes("спасибо")){
+a="You're welcome!";
+}
+document.getElementById('answer').innerText=a;
+xp+=10;
+document.getElementById('xp').innerText=xp;
+document.getElementById('level').innerText=Math.floor(xp/100)+1;
+}
+</script>
+</body>
+</html>
